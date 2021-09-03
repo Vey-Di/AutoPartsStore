@@ -38,36 +38,8 @@
     </header>
     <div class="mainConteiner">
         <main role="main" class="mainbody">
-            <div>
-                @*@await Html.PartialAsync("LoginBlock")*@
-                <div class="LoginBlock">
-                    <h3>Личный кабинет</h3>
-                    <form id="LoginForm" asp-controller="Account" asp-antiforgery="true">
-                        <div asp-validation-summary="ModelOnly"></div>
-                        <div>
-                            <div>
-                                @Html.TextBoxFor(x => x.Email)
-                                @Html.ValidationMessageFor(x => x.Email)
-                            </div>
-                            <div>
-                                @Html.TextBoxFor(x => x.Password)
-                                @Html.ValidationMessageFor(x => x.Password)
-                            </div>
-                            <div>
-                                <input type="checkbox" id="IfNewUser" />
-                                <label>I am new User</label>
-                            </div>
-                            <div class="logBtnBlock">
-                                <input type="submit" id="login" class="logBlockBnt" asp-controller="Account" asp-action="Login" value="Login" />
-                                <input type="button" id="register" class="logBlockBnt" asp-controller="Account" asp-action="Register" value="Register" style="visibility:collapse" />
-                            </div>
-                        </div>
-
-                    </form>
-
-                </div>
-            </div>
-            <div>
+                @await Html.PartialAsync("LoginBlock")
+            <div id="MainBody">
                 @RenderBody()
             </div>
         </main>
