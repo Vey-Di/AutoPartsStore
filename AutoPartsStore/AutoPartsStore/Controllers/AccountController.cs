@@ -63,7 +63,7 @@ namespace AutoPartsStore.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(MainViewModel model)
+        public async Task<IActionResult> Login(Part model)
         {
             if (ModelState.IsValid)
             {
