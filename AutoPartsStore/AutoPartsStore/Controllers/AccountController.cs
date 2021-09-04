@@ -24,6 +24,11 @@ namespace AutoPartsStore.Controllers
             return View();
         }
 
+        public IActionResult Index()
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task <IActionResult> Register(MainViewModel model)
@@ -79,7 +84,7 @@ namespace AutoPartsStore.Controllers
                     ModelState.AddModelError("", "Invalid login or password");
                 }
             }
-            return View("LoginBlock",model);
+            return View("../Home/Index", model);
         }
 
         [HttpPost]
