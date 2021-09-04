@@ -1,0 +1,39 @@
+﻿@model AutoPartsStore.Models.ViewModels.CartIndexViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Cart</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Quantity</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var line in Model.Cart.Lines)
+        {
+            <tr>
+                <td>@line.Quantity</td>
+                <td>@line.Part.Title</td>
+                <td>@line.Part.Price</td>
+                <td>@(line.Quantity * line.Part.Price)</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Total: </td>
+            <td>@Model.Cart.ComputeTotalValue()</td>
+        </tr>
+    </tfoot>
+</table>
+
+<p>
+    <a href="@Model.ReturnUrl" class="btn btn-primary">Contine shopping</a>
+</p>

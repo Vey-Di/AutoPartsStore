@@ -94,3 +94,8 @@ main {
 #register{
     margin-top: -30px;
 }
+
+.LogBlockItem{
+    display:flex;
+    flex-direction:column;
+}

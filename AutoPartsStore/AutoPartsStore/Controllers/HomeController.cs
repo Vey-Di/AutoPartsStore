@@ -24,6 +24,7 @@ namespace AutoPartsStore.Controllers
         public IActionResult Index()
         {
             return View();
+            //return View(partContext.Parts.ToList());
         }
 
     }

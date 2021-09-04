@@ -33,6 +33,7 @@ namespace AutoPartsStore
 
             services.AddDbContext<PartContext>(options => options.UseSqlServer(connection));
             services.AddControllersWithViews();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +52,7 @@ namespace AutoPartsStore
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthentication();

@@ -53,7 +53,7 @@ namespace AutoPartsStore.Controllers
                 }
 
             }
-            return RedirectToAction("Index", "Home");
+            return View("../Home/Index", model);
         }
 
         //public IActionResult Login(string returnUrl = null)
@@ -72,7 +72,7 @@ namespace AutoPartsStore.Controllers
                 {
                     if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
                     {
-                        return Redirect(model.ReturnUrl);
+                        return RedirectToAction("Index", "Home");
                     }
                     else
                     {

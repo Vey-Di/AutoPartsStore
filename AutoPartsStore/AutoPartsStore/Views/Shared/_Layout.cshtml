@@ -24,21 +24,34 @@
                         </li>
                     </ul>
                 </div>
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <div>
-                        <form asp-controller="Account" asp-action="Logout" method="post">
-                            <span>@User.Identity.Name</span>
-                            <button type="submit" class="btn btn-outline-dark">Logout</button>
-                        </form>
-                    </div>
-                }
             </div>
         </nav>
     </header>
     <div class="mainConteiner">
         <main role="main" class="mainbody">
+            @if (User.Identity.IsAuthenticated)
+            {   
+                <div>
+                    <div>
+                        <input type="button" class="btn btn-secondary" value="Cart" />
+                    </div>
+                    <div>
+                        <form asp-controller="Account" asp-action="Logout" method="post">
+                            <div>
+                                <span>@User.Identity.Name</span>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-secondary">Logout</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+            }
+            else
+            {
                 @await Html.PartialAsync("LoginBlock")
+            }
             <div id="MainBody">
                 @RenderBody()
             </div>

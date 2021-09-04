@@ -4,7 +4,7 @@
     <form id="LoginForm" asp-controller="Account" asp-antiforgery="true">
         <div asp-validation-summary="ModelOnly"></div>
         <div>
-            <div>
+            <div class="LogBlockItem">
                 @Html.TextBoxFor(x => x.Email)
                 @Html.ValidationMessageFor(x => x.Email)
             </div>
@@ -13,7 +13,8 @@
                 @Html.ValidationMessageFor(x => x.Password)
             </div>
             <div>
-                <input type="checkbox" id="IfNewUser" />
+                @Html.CheckBoxFor(x=>x.IfNewUser)
+                @*<input type="checkbox" id="IfNewUser" />*@
                 <label>I am new User</label>
             </div>
             <div class="logBtnBlock">

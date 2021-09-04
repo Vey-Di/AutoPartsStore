@@ -74,3 +74,4 @@ D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\bin\Debug\net5.0\Microsoft.AspNe
 D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
 D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
 D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\Razor\Views\Shared\LoginBlock.cshtml.g.cs
+D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\Razor\Views\Cart\Index.cshtml.g.cs
