@@ -1,7 +1,13 @@
-﻿@model AutoPartsStore.Models.Part
+﻿@model AutoPartsStore.Models.ViewModels.LoginViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
 <div class="LoginBlock">
     <h3>Личный кабинет</h3>
-    <form id="LoginForm" asp-controller="Account" asp-antiforgery="true">
+    <form id="LoginForm" asp-controller="Account" asp-antiforgery="true" asp-route-returnUrl="@Model.ReturnUrl">
         <div asp-validation-summary="ModelOnly"></div>
         <div>
             <div class="LogBlockItem">
@@ -13,8 +19,7 @@
                 @Html.ValidationMessageFor(x => x.Password)
             </div>
             <div>
-                @Html.CheckBoxFor(x=>x.IfNewUser)
-                @*<input type="checkbox" id="IfNewUser" />*@
+                @Html.CheckBoxFor(x => x.IfNewUser)
                 <label>I am new User</label>
             </div>
             <div class="logBtnBlock">

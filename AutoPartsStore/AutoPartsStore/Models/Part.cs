@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AutoPartsStore.Models
 {
-    public class Part : MainViewModel
+    public class Part
     {
         public int PartId { get; set; }
         public string Title { get; set; }

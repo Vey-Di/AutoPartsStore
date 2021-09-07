@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoPartsStore.Models.ViewModels
 {
-    public class MainViewModel :IdentityUser
+    public class LoginViewModel
     {
         [EmailAddress]
         public string Email { get; set; }
@@ -16,6 +15,5 @@ namespace AutoPartsStore.Models.ViewModels
         public string Password { get; set; }
         public bool IfNewUser { get; set; }
         public string ReturnUrl { get; set; }
-
     }
 }

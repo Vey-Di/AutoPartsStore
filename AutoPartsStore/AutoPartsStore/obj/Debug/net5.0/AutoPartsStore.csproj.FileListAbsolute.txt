@@ -54,7 +54,6 @@ D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\AutoPartsStore.
 D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\AutoPartsStore.TagHelpers.output.cache
 D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\AutoPartsStore.RazorCoreGenerate.cache
 D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
-D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -73,5 +72,6 @@ D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\bin\Debug\net5.0\Microsoft.AspNe
 D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
 D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
-D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\Razor\Views\Shared\LoginBlock.cshtml.g.cs
 D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\Razor\Views\Cart\Index.cshtml.g.cs
+D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\Razor\Views\NotHome\Index.cshtml.g.cs
+D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs

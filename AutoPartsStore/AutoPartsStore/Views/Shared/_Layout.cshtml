@@ -50,7 +50,9 @@
             }
             else
             {
-                @await Html.PartialAsync("LoginBlock")
+                <div>
+                    <a asp-controller="Account" asp-action="LoginRegister">Login/Register</a>
+                </div>
             }
             <div id="MainBody">
                 @RenderBody()

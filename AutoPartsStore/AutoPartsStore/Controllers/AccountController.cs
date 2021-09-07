@@ -19,19 +19,14 @@ namespace AutoPartsStore.Controllers
             this.signInManager = signInManager;
         }
 
-        public IActionResult Register()
+        public IActionResult Login (string returnUrl = null)
         {
-            return View();
-        }
-
-        public IActionResult Index()
-        {
-            return RedirectToAction("Index", "Home");
+            return View(new LoginViewModel { ReturnUrl = returnUrl });
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task <IActionResult> Register(MainViewModel model)
+        public async Task <IActionResult> Register(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -41,7 +36,7 @@ namespace AutoPartsStore.Controllers
                 if (result.Succeeded)
                 {
                     await signInManager.SignInAsync(user, false);
-                    return RedirectToAction("Index", "Home");
+                    return Redirect(model.ReturnUrl);
                 }
                 else
                 {
@@ -53,17 +48,12 @@ namespace AutoPartsStore.Controllers
                 }
 
             }
-            return View("../Home/Index", model);
+            return View("LoginRegister", model);
         }
-
-        //public IActionResult Login(string returnUrl = null)
-        //{
-        //    return View(new  { ReturnUrl = returnUrl });
-        //}
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(Part model)
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -76,7 +66,8 @@ namespace AutoPartsStore.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return Redirect(model.ReturnUrl);
+                        
                     }
                 }
                 else
@@ -84,7 +75,7 @@ namespace AutoPartsStore.Controllers
                     ModelState.AddModelError("", "Invalid login or password");
                 }
             }
-            return View("../Home/Index", model);
+            return View("LoginRegister", model);
         }
 
         [HttpPost]
@@ -93,11 +84,6 @@ namespace AutoPartsStore.Controllers
         {
             await signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
-        }
-
-        public IActionResult LoginBlock()
-        {
-            return PartialView();
         }
     }
 }
