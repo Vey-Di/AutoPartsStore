@@ -1,35 +1,15 @@
-﻿@*@model IEnumerable<AutoPartsStore.Models.Part>*@
+﻿@model AutoPartsStore.Models.ViewModels.PartListViewModel
 @{
     ViewData["Title"] = "Home Page";
 }
-<h1>Hi</h1>
-@*<h1>Phone Shop</h1>
-@if (ViewBag.ifThx == true)
-{<h1>Thx for buy</h1>}
-<table class="table">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Quantity</th>
-            <th>Price</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var part in Model)
-        {
-            <tr>
-                <td>@part.Title;</td>
-                <td>@part.Quantity;</td>
-                <td>@part.Price;</td>
-                <td>
-                    @using (Html.BeginForm("AddToCart", "Cart"))
-                    {
-                        <input type="hidden" value="@part.PartId" name="PartId" />
-                        @Html.Hidden("returnUrl", Context.Request.Path)
-                        <input type="submit" value="+ Add to Cart" class="btn btn-secondary" />
-                    }
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>*@
+<h1>Part Shop</h1>
+
+
+<div class="form-group">
+    <input type="text" class="form-control" id="searchText"/>
+    <button class="form-control btn btn-primary" id="search">Search</button>
+</div>
+
+<div id="partList">
+
+</div>

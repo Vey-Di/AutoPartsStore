@@ -42,6 +42,26 @@ namespace AutoPartsStore.Models
         {
             lineCollection.Clear();
         }
+
+        public bool IsEmpty()
+        {
+            if (lineCollection.Count() <= 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public void RemoveItem(Part part, int quantity)
+        {
+            CartLine line = lineCollection
+                .Where(x => x.Part.PartId == part.PartId)
+                .FirstOrDefault();
+            line.Quantity -= quantity;
+        }
+
         public IEnumerable<CartLine> Lines => lineCollection;
     }
     public class CartLine
@@ -49,5 +69,7 @@ namespace AutoPartsStore.Models
         public Part Part { get; set; }
         public int Quantity { get; set; }
     }
+
+
 }
 

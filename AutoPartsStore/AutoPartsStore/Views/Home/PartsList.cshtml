@@ -1,0 +1,29 @@
+﻿@model AutoPartsStore.Models.ViewModels.PartListViewModel
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var part in Model.Parts)
+        {
+            <tr>
+                <td>@part.Title</td>
+                <td>@part.Quantity</td>
+                <td>@part.Price</td>
+                <td>
+                    @using (Html.BeginForm("AddToCart", "Cart"))
+                    {
+                        <input type="hidden" value="@part.PartId" name="PartId" />
+                        @Html.Hidden("returnUrl", "/Home/Index")
+                        <input type="submit" value="+ Add to Cart" class="btn btn-secondary" />
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

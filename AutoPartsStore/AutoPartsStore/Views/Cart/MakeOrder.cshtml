@@ -1,0 +1,46 @@
+﻿@model ASP_DZ.Models.Order
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div id="orderConteiner">
+    <div id="order">
+        <center>
+            <h2>Order</h2>
+        </center>
+        <hr>
+        <form method="post" asp-action="ConfirmOrder" asp-controller="Cart">
+            <div id="list">
+                <div class="item">
+                    @Html.LabelFor(x => x.Name)
+                    @Html.TextBoxFor(x => x.Name)
+                    @Html.ValidationMessageFor(x => x.Name)
+                </div>
+                <div class="item">
+                    @Html.LabelFor(x => x.Lastname)
+                    @Html.TextBoxFor(x => x.Lastname)
+                    @Html.ValidationMessageFor(x => x.Lastname)
+                </div>
+                <div class="item">
+                    @Html.LabelFor(x => x.ContactPhone)
+                    @Html.TextBoxFor(x => x.ContactPhone)
+                    @Html.ValidationMessageFor(x => x.ContactPhone)
+                </div>
+                <div class="item">
+                    @Html.LabelFor(x => x.Email)
+                    @Html.TextBoxFor(x => x.Email)
+                    @Html.ValidationMessageFor(x => x.Email)
+                </div>
+                @Html.HiddenFor(x => x.Cart)
+                @Html.HiddenFor(x => x.VisualCart)
+                <hr>
+                <input type="submit" class="btn btn-outline-success" value="Confirm Order" />
+            </div>
+        </form>
+    </div>
+</div>
+<div id="addCart">
+    
+</div>

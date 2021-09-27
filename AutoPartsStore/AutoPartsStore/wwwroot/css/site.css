@@ -2,100 +2,300 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #0366d6;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
+
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
 }
+
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
 }
 
-main {
+.field-validation-error {
+    color: red;
+    background-color: pink;
+    border: 1px solid pink;
+    border-radius: 3px;
+    padding: 3px;
+}
+
+.nav-item {
+    margin-right: 10px;
+}
+
+.field-validation-error {
     display: flex;
+    justify-content: center;
 }
 
-.mainConteiner{
+
+/*Cart View*/
+
+#cartConteiner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cart {
+    display: flex;
     margin: 15px;
+    border: 1px solid gray;
+    border-radius: 3px;
+    flex-direction: column;
 }
 
-.LoginBlock{
-    margin-right: 30px;
-}
-
-.logBtnBlock {
+#cartList {
     display: flex;
     flex-direction: column;
 }
 
-.logBlockBnt {
-    width:74px;
+.cartItem {
+    display: flex;
+    justify-content: space-between;
 }
 
-#register{
+    .cartItem .center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        margin-right: 50px;
+    }
+
+    .cartItem label {
+        font-size: 25px;
+    }
+
+    .cartItem img {
+        margin-left: 15px;
+        height: 200px;
+    }
+
+    .cartItem .leftTab {
+        display: flex;
+    }
+
+    .cartItem .quantity label {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .cartItem .quantity {
+        flex-direction: column;
+    }
+
+    .cartItem .btn {
+        padding-top: 2.5px;
+    }
+
+#cart #bottomTab {
+    display: flex;
+    justify-content: space-between;
     margin-top: -30px;
 }
 
-.LogBlockItem{
-    display:flex;
-    flex-direction:column;
+#cart #makeOrder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+    font-size: 20px;
 }
+
+#cart #bottomTab input {
+    font-size: 20px;
+}
+
+#cart #clear {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    margin: 15px;
+}
+
+#cart .lineHorizontal {
+    border-bottom: 1px solid lightgray;
+    width: 100%;
+    margin: 15px 0px 15px 0px;
+}
+
+.cartItem .price {
+    margin-bottom: 10px;
+}
+
+#cart #empty {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#cart #empty {
+    color: lightgray;
+}
+
+#cart .top a {
+    display: flex;
+    align-self: center;
+    margin-left: 10px;
+    margin-top: 1%;
+}
+
+#cart .top {
+    display: flex;
+}
+
+#cart center {
+    margin-left: 30%;
+}
+
+#cart .price {
+    width: 120px;
+}
+
+#cart .quantity input {
+    width: 36px;
+    height: 36px;
+}
+
+
+/*Order View*/
+#orderConteiner {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#order {
+    border: 1px solid gray;
+    border-radius: 3px;
+    margin-top: 15px;
+    padding: 15px;
+}
+
+    #order #list {
+        display: flex;
+        flex-direction: column;
+    }
+
+        #order #list .item {
+            margin-top: 15px;
+        }
+
+            #order #list .item label {
+                width: 110px;
+            }
+
+
+/*Order Add*/
+
+#addCart {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#showList {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+    border-radius: 3px;
+    margin-top: 15px;
+}
+
+    #showList .item {
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+        #showList .item .center {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-content: center;
+            margin-right: 50px;
+        }
+
+        #showList .item img {
+            margin-left: 15px;
+            height: 90px;
+        }
+
+        #showList .item .leftTab {
+            display: flex;
+        }
+
+        #showList .item label {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+        }
+
+        #showList .item .quantity {
+            flex-direction: column;
+        }

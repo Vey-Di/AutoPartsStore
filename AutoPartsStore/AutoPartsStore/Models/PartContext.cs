@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using ASP_DZ.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,8 @@ namespace AutoPartsStore.Models
     public class PartContext : IdentityDbContext
     {
         public DbSet<Part> Parts { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
         public PartContext( DbContextOptions<PartContext> options) : base(options)
         {
             Database.EnsureCreated();

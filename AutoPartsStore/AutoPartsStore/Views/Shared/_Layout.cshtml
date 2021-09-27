@@ -1,10 +1,9 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - AutoPartsStore</title>
+    <title>@ViewData["Title"] - Part Shop</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -12,56 +11,71 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AutoPartsStore</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Part Shop</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
                 </div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <ul class="navbar-nav flex-grow-2">
+                        <li class="nav-item">
+                            <div>
+                                <form asp-controller="Cart" asp-action="Index">
+                                    @Html.Hidden("returnUrl", Context.Request.Path)
+                                    <button type="submit" class="btn btn-outline-primary">Cart</button>
+                                </form>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div>
+                                <form asp-controller="Account" asp-action="Logout" method="post">
+                                    <span>@User.Identity.Name</span>
+                                    <button type="submit" class="btn btn-outline-dark">Logout</button>
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                }
+                else
+                {
+
+                    <ul class="navbar-nav flex-grow-2">
+                        <li class="nav-item">
+                            <div>
+                                <a href="/Account/Login" class="btn btn-outline-dark">Sign In</a>
+                            </div>
+                        </li>
+                    </ul>
+                }
+
             </div>
         </nav>
     </header>
-    <div class="mainConteiner">
-        <main role="main" class="mainbody">
-            @if (User.Identity.IsAuthenticated)
-            {   
-                <div>
-                    <div>
-                        <input type="button" class="btn btn-secondary" value="Cart" />
-                    </div>
-                    <div>
-                        <form asp-controller="Account" asp-action="Logout" method="post">
-                            <div>
-                                <span>@User.Identity.Name</span>
-                            </div>
-                            <div>
-                                <button type="submit" class="btn btn-secondary">Logout</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                
-            }
-            else
-            {
-                <div>
-                    <a asp-controller="Account" asp-action="LoginRegister">Login/Register</a>
-                </div>
-            }
-            <div id="MainBody">
-                @RenderBody()
-            </div>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
         </main>
     </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - ASP_DZ - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

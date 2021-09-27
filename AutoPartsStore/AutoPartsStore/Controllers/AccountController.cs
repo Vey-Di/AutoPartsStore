@@ -48,7 +48,7 @@ namespace AutoPartsStore.Controllers
                 }
 
             }
-            return View("LoginRegister", model);
+            return View("Login", model);
         }
 
         [HttpPost]
@@ -66,8 +66,8 @@ namespace AutoPartsStore.Controllers
                     }
                     else
                     {
-                        return Redirect(model.ReturnUrl);
-                        
+                        return RedirectToAction("Index", "Home");
+
                     }
                 }
                 else
@@ -75,7 +75,7 @@ namespace AutoPartsStore.Controllers
                     ModelState.AddModelError("", "Invalid login or password");
                 }
             }
-            return View("LoginRegister", model);
+            return View("Login", model);
         }
 
         [HttpPost]

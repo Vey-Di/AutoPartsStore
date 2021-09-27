@@ -24,7 +24,20 @@ namespace AutoPartsStore.Controllers
         public IActionResult Index()
         {
             return View();
-            //return View(partContext.Parts.ToList());
+        }
+
+        public IActionResult PartsList (string search="")
+        {
+            List<Part> parts = partContext.Parts.ToList();
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                parts = parts.Where(x => x.Title.ToLower().Contains(search.ToLower())).ToList();
+            }
+
+            return PartialView(new PartListViewModel {
+                Parts = parts
+            });
         }
 
     }

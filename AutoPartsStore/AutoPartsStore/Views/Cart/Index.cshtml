@@ -5,35 +5,126 @@
 @{
 }
 
-<h1>Cart</h1>
-<table>
-    <thead>
-        <tr>
-            <th>Quantity</th>
-            <th>Title</th>
-            <th>Price</th>
-            <th>Subtotal</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var line in Model.Cart.Lines)
-        {
-            <tr>
-                <td>@line.Quantity</td>
-                <td>@line.Part.Title</td>
-                <td>@line.Part.Price</td>
-                <td>@(line.Quantity * line.Part.Price)</td>
-            </tr>
-        }
-    </tbody>
-    <tfoot>
-        <tr>
-            <td>Total: </td>
-            <td>@Model.Cart.ComputeTotalValue()</td>
-        </tr>
-    </tfoot>
-</table>
+<div id="cart">
+    <div>
+        <div class="top">
+            <a href="@Model.ReturnUrl" class="btn btn-outline-primary">Continue Shoping</a>
+            <center>
+                <h2>Cart</h2>
+            </center>
+        </div>
+    </div>
+    <div class="lineHorizontal"></div>
+    @if (!Model.Cart.IsEmpty())
+    {
+        <div id="cartList">
+            @foreach (var line in Model.Cart.Lines)
+            {
+                <div class="cartItem">
+                    <div class="leftTab">
+                        @*<div class="center">
+                            <img src="data:image/png;base64, @line.Part.Image" />
+                        </div>*@
+                        <div class="center">
+                            <label class="display-6">@line.Part.Title</label>
+                        </div>
+                    </div>
+                    <div class="center quantity">
+                        @if (line.Quantity < 10)
+                        {
+                            @using (Html.BeginForm("AddToCart", "Cart"))
+                            {
+                                <input type="hidden" value="@line.Part.PartId" name="partId" />
+                                @Html.Hidden("returnUrl", "/Cart/Index")
+                                <input type="submit" class="btn btn-outline-dark" value="+">
+                            }
+                        }
+                        else
+                        {
+                            <input type="submit" class="btn btn-outline-dark" disabled value="+">
+                        }
+                        <label class="display-6">@line.Quantity</label>
+                        @if (line.Quantity > 1)
+                        {
+                            @using (Html.BeginForm("ReduceQuantity", "Cart"))
+                            {
+                                <input type="hidden" value="@line.Part.PartId" name="partId" />
+                                @Html.Hidden("returnUrl", "/Cart/Index")
+                                <input type="submit" class="btn btn-outline-dark" value="-">
+                            }
+                        }
+                        else
+                        {
+                            @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                            {
+                                <input type="hidden" value="@line.Part.PartId" name="partId" />
+                                @Html.Hidden("returnUrl", "/Cart/Index")
+                                <input type="submit" class="btn btn-outline-dark" value="-">
+                            }
 
-<p>
-    <a href="@Model.ReturnUrl" class="btn btn-primary">Contine shopping</a>
-</p>
+                        }
+                    </div>
+                    <div class="center">
+                        <div class="price">
+                            <label>@(line.Quantity * line.Part.Price) ₴</label>
+                        </div>
+                        @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                        {
+                            <input type="hidden" value="@line.Part.PartId" name="partId" />
+                            @Html.Hidden("returnUrl", "/Cart/Index")
+                            <input type="submit" class="btn btn-outline-danger" value="Delete">
+                        }
+                    </div>
+                </div>
+                <div class="lineHorizontal"></div>
+            }
+            <div id="bottomTab">
+                <div id="clear">
+                    @using (Html.BeginForm("ClearCart", "Cart"))
+                    {
+                        @Html.Hidden("returnUrl", "/Cart/Index")
+                        <input type="submit" class="btn btn-outline-warning" value="Clear Cart">
+                    }
+
+                </div>
+                <div id="makeOrder">
+                    <div>
+                        <label>Total: </label>
+                        <label>@Model.Cart.ComputeTotalValue()</label>
+                        <label> ₴</label>
+                    </div>
+                    @using (Html.BeginForm("MakeOrder", "Cart"))
+                    {
+                        @Html.Hidden("returnUrl", "/Cart/Index")
+                        <input type="submit" class="btn btn-outline-success" value="Make Order">
+                    }
+
+                </div>
+            </div>
+        </div>
+
+    }
+    else
+    {
+        <div id="cartList">
+            <div id="empty">
+                <h2>Your Cart is Empty</h2>
+            </div>
+            <div class="lineHorizontal"></div>
+            <div id="bottomTab">
+                <div id="clear">
+                    <input type="submit" class="btn btn-outline-warning" disabled value="Clear Cart">
+                </div>
+                <div id="makeOrder">
+                    <div>
+                        <label>Total: </label>
+                        <label>@Model.Cart.ComputeTotalValue()</label>
+                        <label> ₴</label>
+                    </div>
+                    <input type="button" class="btn btn-outline-success" disabled value="Make Order">
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
