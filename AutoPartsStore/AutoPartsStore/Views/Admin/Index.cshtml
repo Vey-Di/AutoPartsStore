@@ -1,0 +1,38 @@
+﻿@model IEnumerable<AutoPartsStore.Models.Part>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div id="adminShowConteiner">
+    <div id="list">
+        <div class="top">
+            <a href="~/Admin/Create" class="btn btn-outline-secondary">Create New</a>
+            <center>
+                <h2>Phone List</h2>
+            </center>
+        </div>
+        <div class="horizontalLine"></div>
+        @foreach (var part in Model)
+        {
+    <div class="item">
+        @*<div style="width:144px">
+            <img src="data:image/png;base64, @phone.Image" />
+        </div>*@
+        <div style="width:195px">
+            <label>@part.Title</label>
+        </div>
+        
+        <a href="~/Admin/Create/@part.PartId" class="btn btn-warning">Edit</a>
+        <div>
+            <form action="~/Admin/Delete" method="post">
+                <input type="hidden" value="@part.PartId" name="PartId" />
+                <input type="submit" value="Delete" class="btn btn-danger" />
+            </form>
+        </div>
+    </div>
+            <div class="horizontalLine"></div>
+        }
+    </div>
+</div>

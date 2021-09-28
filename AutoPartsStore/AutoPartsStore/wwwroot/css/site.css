@@ -299,3 +299,176 @@ body {
         #showList .item .quantity {
             flex-direction: column;
         }
+
+
+/*Admin View*/
+/*Create*/
+
+#adminConteiner {
+    display: flex;
+    justify-content: center;
+}
+
+    #adminConteiner .horizontalLine {
+        border-top: 1px solid lightgray;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    #adminConteiner #create {
+        margin-top: 20px;
+        border: 1px solid lightgray;
+        border-radius: 3px;
+        padding: 10px;
+    }
+
+    #adminConteiner .list {
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+    }
+
+    #adminConteiner .item {
+        margin: 10px 10px 0px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+        #adminConteiner .item label {
+            width: 112px;
+        }
+
+        #adminConteiner .item .collum {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: baseline;
+        }
+
+            #adminConteiner .item .collum .second {
+                margin-top: 10px;
+            }
+
+    #adminConteiner .header {
+        width: 74%;
+        justify-content: space-around;
+    }
+
+    #adminConteiner .marginRight {
+        margin-right: 10px;
+    }
+
+#featureCreat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    margin-top: 20px;
+}
+
+    #featureCreat .right {
+        display: flex;
+        justify-content: center;
+        padding-top: 10px;
+    }
+
+    #featureCreat .list {
+        padding-bottom: 10px
+    }
+
+    #featureCreat input {
+        margin-right: 10px;
+    }
+
+#adminConteiner .center {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 10px 0px 10px;
+}
+
+#adminConteiner .right {
+    display: flex;
+    justify-content: right;
+}
+
+#adminConteiner .item #imageFile {
+}
+
+#adminConteiner ul {
+    list-style-type: none;
+    color: red;
+    background-color: pink;
+    border: 1px solid pink;
+    border-radius: 3px;
+    padding: 3px;
+}
+
+#adminConteiner .validation-summary-errors {
+    display: flex;
+    justify-content: center;
+}
+
+#file-upload-button {
+    visibility: collapse;
+}
+
+/*Admin Phone show*/
+
+#adminShowConteiner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    #adminShowConteiner #list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid lightgray;
+        border-radius: 3px;
+        margin-top: 20px;
+    }
+
+    #adminShowConteiner .horizontalLine {
+        border-top: 1px solid lightgray;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    #adminShowConteiner #list .item img {
+        height: 100px;
+        margin-left: 10px;
+    }
+
+    #adminShowConteiner #list .item {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+        #adminShowConteiner #list .item > * {
+            margin-right: 10px;
+        }
+
+    #adminShowConteiner .top {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+        #adminShowConteiner .top a {
+            display: flex;
+            align-self: center;
+            margin-left: 10px;
+            margin-top: 1%;
+        }
+
+    #adminShowConteiner center {
+        margin-left: 11%;
+    }

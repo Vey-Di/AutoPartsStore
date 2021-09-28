@@ -1,0 +1,82 @@
+﻿@model AutoPartsStore.Models.Part
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div id="adminConteiner">
+    <form method="post">
+        <div id="create">
+            <center>
+                <h2>Create</h2>
+            </center>
+            <div class="horizontalLine"></div>
+            <div class="list">
+                @Html.HiddenFor(x => x.PartId)
+                <div asp-validation-summary="ModelOnly"></div>
+                <div class="item">
+                    @Html.LabelFor(x => x.Title)
+                    @Html.TextBoxFor(x => x.Title)
+                    @Html.ValidationMessageFor(x => x.Title)
+                </div>
+                <div class="item">
+                    @Html.LabelFor(x => x.Quantity)
+                    @Html.TextBoxFor(x => x.Quantity)
+                    @Html.ValidationMessageFor(x => x.Quantity)
+                </div>
+                <div class="item">
+                    @Html.LabelFor(x => x.Price)
+                    @Html.TextBoxFor(x => x.Price)
+                    @Html.ValidationMessageFor(x => x.Price)
+                </div>
+            </div>
+            <div class="horizontalLine"></div>
+            <div class="center">
+                <input type="submit" value="Save" class="btn btn-outline-success">
+            </div>
+        </div>
+    </form>
+</div>
+@*<div id="adminConteiner">
+    <div id="featureCreat">
+        <input type="hidden" value="@Quantity.PartId" id="phoneId" name="phoneId" />
+        <div class="right">
+            <input type="button" class="btn btn-outline-secondary" id="addFeature" value="AddFeature">
+        </div>
+        <div class="horizontalLine"></div>
+        <div class="list" id="featuresList">
+            <div class="item header">
+                <label>Feature Name</label>
+                <label>Value</label>
+            </div>
+            @if (Quantity.VisualFeature != null)
+            {
+                @foreach (var feature in Quantity.VisualFeature)
+                {
+                    <div class="item feature">
+                        <form method="post" asp-action="ChangeFeatureLine" asp-controller="Admin" class="saveFeatureLine">
+                            <input type="text" value="@feature.Name" id="newFeatureName" class="marginRight">
+                            <input type="text" value="@feature.Value" id="newFeatureValue">
+                            <input type="hidden" value="@feature.Name" id="featureName" name="featureName" />
+                            <input type="hidden" value="@feature.Value" id="featureValue" name="featureValue" />
+                            <input type="hidden" value="@Quantity.PartId" name="phoneId" />
+                            <input type="submit" value="Save" class="btn btn-outline-primary" />
+                        </form>
+
+                        @using (Html.BeginForm("RemoveFeatureLine", "Admin"))
+                        {
+                            <input type="hidden" value="@feature.Name" name="FeatureName" />
+                            <input type="hidden" value="@Quantity.PartId" name="phoneId" />
+                            @Html.Hidden("returnUrl", Context.Request.Path)
+                            <input type="submit" value="Remove" class="btn btn-outline-danger" />
+                        }
+
+                    </div>
+
+                }
+            }
+
+        </div>
+    </div>
+</div>*@

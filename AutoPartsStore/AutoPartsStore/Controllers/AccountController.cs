@@ -26,17 +26,17 @@ namespace AutoPartsStore.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task <IActionResult> Register(LoginViewModel model)
+        public async Task<IActionResult> Register(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
-                IdentityUser user = new IdentityUser { UserName = model.Email};
+                IdentityUser user = new IdentityUser { Email = model.Email, UserName = model.Email };
                 IdentityResult result = await userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
                 {
                     await signInManager.SignInAsync(user, false);
-                    return Redirect(model.ReturnUrl);
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
