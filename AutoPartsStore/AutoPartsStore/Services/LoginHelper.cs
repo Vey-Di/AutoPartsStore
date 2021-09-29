@@ -11,9 +11,9 @@ namespace AutoPartsStore.Services
 {
     //public class LoginHelper
     //{
-    //    private readonly UserManager<IdentityUser> userManager;
-    //    private readonly SignInManager<IdentityUser> signInManager;
-    //    public LoginHelper(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+    //    private readonly UserManager<User> userManager;
+    //    private readonly SignInManager<User> signInManager;
+    //    public LoginHelper(UserManager<User> userManager, SignInManager<User> signInManager)
     //    {
     //        this.userManager = userManager;
     //        this.signInManager = signInManager;
@@ -22,7 +22,7 @@ namespace AutoPartsStore.Services
     //    public async LoginViewModel Register(LoginViewModel model)
     //    {
 
-    //            IdentityUser user = new IdentityUser { UserName = model.Email };
+    //            User user = new User { UserName = model.Email };
     //            IdentityResult result = await userManager.CreateAsync(user, model.Password);
 
     //            if (result.Succeeded)

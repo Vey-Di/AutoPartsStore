@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ASP_DZ.Controllers
+namespace AutoPartsStore.Controllers
 {
     [Authorize/*(Roles ="Admin")*/]
     public class AdminController : Controller

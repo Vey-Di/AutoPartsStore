@@ -1,4 +1,4 @@
-﻿using ASP_DZ.Models;
+﻿using AutoPartsStore.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AutoPartsStore.Models
 {
-    public class PartContext : IdentityDbContext
+    public class PartContext : IdentityDbContext<User>
     {
         public DbSet<Part> Parts { get; set; }
 

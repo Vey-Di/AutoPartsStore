@@ -27,8 +27,9 @@ namespace AutoPartsStore
         public void ConfigureServices(IServiceCollection services)
         {
             string connection = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<PartContext>(options => options.UseSqlServer(connection));
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<PartContext>();
 
             services.AddDbContext<PartContext>(options => options.UseSqlServer(connection));

@@ -85,3 +85,7 @@ D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\bin\Debug\net5.0\System.Web.WebP
 D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\bin\Debug\net5.0\Microsoft.Web.Infrastructure.dll
 D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\Razor\Views\Admin\Create.cshtml.g.cs
 D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\Razor\Views\Admin\Index.cshtml.g.cs
+D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\Razor\Views\Roles\Create.cshtml.g.cs
+D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\Razor\Views\Roles\Edit.cshtml.g.cs
+D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\Razor\Views\Roles\Index.cshtml.g.cs
+D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\Razor\Views\Roles\UserList.cshtml.g.cs
