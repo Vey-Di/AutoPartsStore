@@ -1,0 +1,65 @@
+﻿@model AutoPartsStore.Models.ViewModels.PartShowViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div id="showConteiner">
+    <div id="tab">
+        <div id="showTab">
+            <div>
+                <img src="data:image/png;base64, @Model.Image" />
+            </div>
+            <div>
+                <p>@Model.Price₴</p>
+            </div>
+            <div>
+                @using (Html.BeginForm("AddToCart", "Cart"))
+                {
+                    <input type="hidden" value="@Model.PartId" name="PartId" />
+                    @Html.Hidden("returnUrl", "/Home/Index")
+                    <input type="submit" class="btn btn-outline-success" value="Add to Cart">
+                }
+            </div>
+        </div>
+        <div class="verticalLine"></div>
+        <div id="tableConteiner">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>
+                            <lable>Title:</lable>
+                        </td>
+                        <td>
+                            <div class="placeHolder"></div>
+                        </td>
+                        <td>
+
+                            <label>@Model.Title</label>
+                        </td>
+                    </tr>
+                    @if (Model.Feature != null)
+                    {
+                        @foreach (var str in Model.Feature)
+                        {
+                            <tr>
+                                <td>
+                                    <lable>@str.Name</lable>
+                                </td>
+                                <td>
+                                    <div class="placeHolder"></div>
+                                </td>
+                                <td>
+
+                                    <label>@str.Value</label>
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

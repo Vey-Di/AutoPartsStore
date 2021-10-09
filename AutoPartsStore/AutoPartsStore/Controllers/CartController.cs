@@ -1,6 +1,5 @@
 ﻿using AutoPartsStore.Models;
 using AutoPartsStore.Extensions;
-using AutoPartsStore.Models;
 using AutoPartsStore.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;

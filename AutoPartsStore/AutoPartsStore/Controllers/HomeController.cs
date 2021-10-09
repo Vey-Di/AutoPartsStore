@@ -3,6 +3,7 @@ using AutoPartsStore.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -40,5 +41,26 @@ namespace AutoPartsStore.Controllers
             });
         }
 
+        public IActionResult PartShow(int? partId)
+        {
+            var part = partContext.Parts.Find(partId);
+
+            List<Feature> featureList = null;
+
+            if (part.Feature != null)
+            {
+                featureList = JsonConvert.DeserializeObject<List<Feature>>(part.Feature);
+            }
+
+            var partToShow = new PartShowViewModel
+            {
+                PartId = part.PartId,
+                Title = part.Title,
+                Image = part.Image,
+                Price = part.Price,
+                Feature = featureList
+            };
+            return View(partToShow);
+        }
     }
 }

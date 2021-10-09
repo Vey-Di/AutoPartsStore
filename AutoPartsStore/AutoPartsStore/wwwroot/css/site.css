@@ -472,3 +472,70 @@ body {
     #adminShowConteiner center {
         margin-left: 11%;
     }
+
+
+/*Phone Show View*/
+
+#showConteiner {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#tab {
+    display: flex;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    margin: 15px;
+    height: 700px;
+    min-width: 300px;
+}
+
+    #tab .placeHolder {
+        min-width: 100px;
+    }
+
+    #tab table {
+        display: flex;
+    }
+
+#showTab {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+}
+
+    #showTab img {
+        max-width: 300px;
+        max-height: 500px;
+    }
+
+    #showTab input {
+        font-size: 40px;
+    }
+
+    #showTab p {
+        font-weight: bold;
+        font-size: 25px;
+        margin: 10px;
+    }
+
+#featureList {
+    display: flex;
+    flex-direction: column;
+}
+
+    #featureList .item {
+        display: flex;
+        justify-content: space-between;
+    }
+
+.verticalLine {
+    border-left: 1px solid lightgrey;
+    height: 100%;
+    left: 50%;
+    margin-left: -3px;
+    top: 0;
+}

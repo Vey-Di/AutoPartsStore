@@ -15,6 +15,7 @@
                 <td>@part.Title</td>
                 <td>@part.Quantity</td>
                 <td>@part.Price</td>
+                <td><a href="/Home/PartShow/?partId=@part.PartId">More info</a></td>
                 <td>
                     @using (Html.BeginForm("AddToCart", "Cart"))
                     {
