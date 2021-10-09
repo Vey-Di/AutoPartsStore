@@ -41,6 +41,12 @@ namespace AutoPartsStore.Controllers
                 User user = new User { Email = model.Email, UserName = model.Email };
                 IdentityResult result = await userManager.CreateAsync(user, model.Password);
 
+                var ifRole = await roleManager.FindByNameAsync("User");
+                if (ifRole == null)
+                {
+                    await roleManager.CreateAsync(new IdentityRole("User"));
+                }
+
                 User userFound = await userManager.FindByNameAsync(model.Email);
                 await userManager.AddToRoleAsync(userFound, "User");
 
