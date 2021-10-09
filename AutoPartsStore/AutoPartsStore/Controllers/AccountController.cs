@@ -18,10 +18,13 @@ namespace AutoPartsStore.Controllers
     {
         private readonly UserManager<User> userManager;
         private readonly SignInManager<User> signInManager;
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+        private readonly RoleManager<IdentityRole> roleManager;
+
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<IdentityRole> roleManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            this.roleManager = roleManager;
         }
 
         public IActionResult Login (string returnUrl = null)
@@ -37,6 +40,9 @@ namespace AutoPartsStore.Controllers
             {
                 User user = new User { Email = model.Email, UserName = model.Email };
                 IdentityResult result = await userManager.CreateAsync(user, model.Password);
+
+                User userFound = await userManager.FindByNameAsync(model.Email);
+                await userManager.AddToRoleAsync(userFound, "User");
 
                 if (result.Succeeded)
                 {
