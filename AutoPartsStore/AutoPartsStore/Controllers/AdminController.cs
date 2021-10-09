@@ -33,6 +33,7 @@ namespace AutoPartsStore.Controllers
                 var partToEdit = context.Parts.Find(id);
                 var part = new Part { };
                 part = partToEdit;
+                part.VisualFeature = JsonConvert.DeserializeObject<List<Feature>>(partToEdit.Feature);
                 return View(part);
             }
 
@@ -43,24 +44,126 @@ namespace AutoPartsStore.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (part.PartId == 0)
+                if (!string.IsNullOrEmpty(part.Image))
                 {
-                    context.Parts.Add(part);
+                    if (part.PartId == 0)
+                    {
+                        context.Parts.Add(part);
+                    }
+                    else
+                    {
+                        var partToEdit = context.Parts.Find(part.PartId);
+                        partToEdit.Title = part.Title;
+                        partToEdit.Quantity = part.Quantity;
+                        partToEdit.Price = part.Price;
+                        partToEdit.Feature = part.Feature;
+                        partToEdit.VisualFeature = JsonConvert.DeserializeObject<List<Feature>>(partToEdit.Feature);
+                    }
+                    context.SaveChanges();
+                    return RedirectToAction("Index");
                 }
                 else
                 {
-                    var partToEdit = context.Parts.Find(part.PartId);
-                    partToEdit.Title = part.Title;
-                    partToEdit.Quantity = part.Quantity;
-                    partToEdit.Price = part.Price;
+                    ModelState.AddModelError("", "Image required");
+                    return View(part);
                 }
-                context.SaveChanges();
-                return RedirectToAction("Index");
+                    
             }
             else
             {
                 return View(part);
             }
+        }
+
+        [HttpPost]
+        public IActionResult RemoveFeatureLine(int partId, string FeatureName)
+        {
+            if (FeatureName != null)
+            {
+                var partFind = context.Parts.Find(partId);
+                List<Feature> newFeatureLsit = JsonConvert.DeserializeObject<List<Feature>>(partFind.Feature);
+                foreach (var item in newFeatureLsit)
+                {
+                    if (item.Name == FeatureName)
+                    {
+                        newFeatureLsit.Remove(item);
+                        break;
+                    }
+                }
+                var part = new Part { };
+                part = partFind;
+                part.VisualFeature = newFeatureLsit;
+                part.Feature = JsonConvert.SerializeObject(newFeatureLsit);
+
+                partFind.Title = part.Title;
+                partFind.Quantity = part.Quantity;
+                partFind.Image = part.Image;
+                partFind.Price = part.Price;
+                partFind.Feature = part.Feature;
+                partFind.VisualFeature = part.VisualFeature;
+                context.SaveChanges();
+            }
+            return RedirectToAction("Create", new { id = partId });
+        }
+
+        [HttpPost]
+        public IActionResult ChangeFeatureLine(int partId, string featureName, string featureValue, string newFeatureName, string newFeatureValue)
+        {
+            if (featureName == null)
+            {
+                if (newFeatureName != null && newFeatureValue != null)
+                {
+                    var partFind = context.Parts.Find(partId);
+                    List<Feature> newFeatureLsit = JsonConvert.DeserializeObject<List<Feature>>(partFind.Feature);
+
+                    newFeatureLsit.Add(new Feature
+                    {
+                        Name = newFeatureName,
+                        Value = newFeatureValue
+                    });
+
+                    var part = new Part { };
+                    part = partFind;
+                    part.VisualFeature = newFeatureLsit;
+                    part.Feature = JsonConvert.SerializeObject(newFeatureLsit);
+                    partFind.Title = part.Title;
+                    partFind.Quantity = part.Quantity;
+                    partFind.Image = part.Image;
+                    partFind.Price = part.Price;
+                    partFind.Feature = part.Feature;
+                    partFind.VisualFeature = part.VisualFeature;
+                    context.SaveChanges();
+                }
+            }
+            else
+            {
+                if (newFeatureName != null && newFeatureValue != null)
+                {
+                    var partFind = context.Parts.Find(partId);
+                    List<Feature> newFeatureLsit = JsonConvert.DeserializeObject<List<Feature>>(partFind.Feature);
+                    for (int i = 0; i < newFeatureLsit.Count; i++)
+                    {
+                        if (newFeatureLsit[i].Name == featureName)
+                        {
+                            newFeatureLsit[i].Name = newFeatureName;
+                            newFeatureLsit[i].Value = newFeatureValue;
+                        }
+                    }
+                    var part = new Part { };
+                    part = partFind;
+                    part.VisualFeature = newFeatureLsit;
+                    part.Feature = JsonConvert.SerializeObject(newFeatureLsit);
+
+                    partFind.Title = part.Title;
+                    partFind.Quantity = part.Quantity;
+                    partFind.Image = part.Image;
+                    partFind.Price = part.Price;
+                    partFind.Feature = part.Feature;
+                    partFind.VisualFeature = part.VisualFeature;
+                    context.SaveChanges();
+                }
+            }
+            return RedirectToAction("Create", new { id = partId });
         }
 
         //[HttpPost]

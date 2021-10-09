@@ -38,9 +38,9 @@
         </div>
     </form>
 </div>
-@*<div id="adminConteiner">
+<div id="adminConteiner">
     <div id="featureCreat">
-        <input type="hidden" value="@Quantity.PartId" id="phoneId" name="phoneId" />
+        <input type="hidden" value="@Model.PartId" id="partId" name="partId" />
         <div class="right">
             <input type="button" class="btn btn-outline-secondary" id="addFeature" value="AddFeature">
         </div>
@@ -50,9 +50,9 @@
                 <label>Feature Name</label>
                 <label>Value</label>
             </div>
-            @if (Quantity.VisualFeature != null)
+            @if (Model.VisualFeature != null)
             {
-                @foreach (var feature in Quantity.VisualFeature)
+                @foreach (var feature in Model.VisualFeature)
                 {
                     <div class="item feature">
                         <form method="post" asp-action="ChangeFeatureLine" asp-controller="Admin" class="saveFeatureLine">
@@ -60,14 +60,14 @@
                             <input type="text" value="@feature.Value" id="newFeatureValue">
                             <input type="hidden" value="@feature.Name" id="featureName" name="featureName" />
                             <input type="hidden" value="@feature.Value" id="featureValue" name="featureValue" />
-                            <input type="hidden" value="@Quantity.PartId" name="phoneId" />
+                            <input type="hidden" value="@Model.PartId" name="partId" />
                             <input type="submit" value="Save" class="btn btn-outline-primary" />
                         </form>
 
                         @using (Html.BeginForm("RemoveFeatureLine", "Admin"))
                         {
                             <input type="hidden" value="@feature.Name" name="FeatureName" />
-                            <input type="hidden" value="@Quantity.PartId" name="phoneId" />
+                            <input type="hidden" value="@Model.PartId" name="partId" />
                             @Html.Hidden("returnUrl", Context.Request.Path)
                             <input type="submit" value="Remove" class="btn btn-outline-danger" />
                         }
@@ -79,4 +79,4 @@
 
         </div>
     </div>
-</div>*@
+</div>
