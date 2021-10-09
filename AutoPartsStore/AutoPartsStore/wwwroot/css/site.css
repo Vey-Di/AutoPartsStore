@@ -539,3 +539,135 @@ body {
     margin-left: -3px;
     top: 0;
 }
+
+
+/*Login View*/
+
+#signInConteiner {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#signIn {
+    border: 1px solid gray;
+    border-radius: 3px;
+    margin-top: 15px;
+    padding: 15px;
+}
+
+    #signIn #list {
+        display: flex;
+        flex-direction: column;
+    }
+
+        #signIn #list .item {
+            margin-top: 15px;
+        }
+
+            #signIn #list .item label {
+                width: 110px;
+            }
+
+    #signIn #register {
+        margin-top: -38px;
+    }
+
+    #signIn ul {
+        list-style-type: none;
+        color: red;
+        background-color: pink;
+        border: 1px solid pink;
+        border-radius: 3px;
+        padding: 3px;
+    }
+
+#list .lineHorizontal {
+    border-bottom: 1px solid lightgray;
+    width: 100%;
+    margin: 15px 0px 15px 0px;
+}
+
+.validation-summary-errors {
+    display: flex;
+    justify-content: center;
+}
+
+    .validation-summary-errors ul {
+        list-style-type: none;
+        color: red;
+        background-color: pink;
+        border: 1px solid pink;
+        border-radius: 3px;
+        padding: 3px;
+    }
+
+#signIn .forgotPassword {
+    display: flex;
+    justify-content: center;
+}
+
+    #signIn .forgotPassword a {
+        color: blue;
+        font-size: 10px;
+    }
+
+
+
+/*ResetPassword groop*/
+
+.lineHorizontal {
+    border-bottom: 1px solid lightgray;
+    width: 100%;
+    margin: 15px 0px 15px 0px;
+}
+
+#passwodConteiner {
+    display: flex;
+    justify-content: center;
+}
+
+    #passwodConteiner #password {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        border: 1px solid lightgray;
+        border-radius: 3px;
+        margin-top: 20px;
+        padding: 15px;
+    }
+
+        #passwodConteiner #password .item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+        }
+
+            #passwodConteiner #password .item label {
+                margin-right: 5px;
+            }
+
+            #passwodConteiner #password .item input {
+                width: 250px
+            }
+
+    /**/
+    #passwodConteiner #passwordEnter {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        border: 1px solid lightgray;
+        border-radius: 3px;
+        margin-top: 20px;
+        padding: 15px;
+    }
+
+        #passwodConteiner #passwordEnter .item {
+            margin-bottom: 10px 0px 10px 10px;
+        }
+
+            #passwodConteiner #passwordEnter .item label {
+                width: 130px;
+                margin-right: 5px;
+            } 

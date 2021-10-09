@@ -5,29 +5,52 @@
 @{
 }
 
-<div class="LoginBlock">
-    <h3>Личный кабинет</h3>
-    <form id="LoginForm" asp-controller="Account" asp-antiforgery="true" asp-route-returnUrl="@Model.ReturnUrl">
-        <div asp-validation-summary="ModelOnly"></div>
-        <div>
-            <div class="LogBlockItem">
-                @Html.TextBoxFor(x => x.Email)
-                @Html.ValidationMessageFor(x => x.Email)
-            </div>
-            <div>
-                @Html.PasswordFor(x => x.Password)
-                @Html.ValidationMessageFor(x => x.Password)
-            </div>
-            <div>
-                @Html.CheckBoxFor(x => x.IfNewUser)
-                <label>I am new User</label>
-            </div>
-            <div class="logBtnBlock">
-                <input type="submit" id="login" class="logBlockBnt" asp-controller="Account" asp-action="Login" value="Login" />
-                <input type="submit" id="register" class="logBlockBnt" asp-controller="Account" asp-action="Register" value="Register" style="visibility:collapse" />
-            </div>
-        </div>
+<div id="signInConteiner">
+    <div id="signIn">
+        <center>
+            <h2>Sign In</h2>
+        </center>
+        <hr>
+        <form asp-controller="Account" asp-antiforgery="true" asp-route-returnUrl="@Model.ReturnUrl">
+            <div asp-validation-summary="ModelOnly"></div>
+            @Html.ValidationMessageFor(x => x.Email)
+            @Html.ValidationMessageFor(x => x.Password)
+            <div id="list">
+                <div class="item">
+                    @Html.LabelFor(x => x.Email)
+                    @Html.TextBoxFor(x => x.Email)
 
-    </form>
+                </div>
+                <div class="item">
+                    @Html.LabelFor(x => x.Password)
+                    @Html.PasswordFor(x => x.Password)
 
+                </div>
+                <div class="item">
+                    @Html.LabelFor(x => x.RememberMe)
+                    @Html.CheckBoxFor(x => x.RememberMe)
+                </div>
+                <div class="item">
+                    <label>I am new User</label>
+                    @Html.CheckBoxFor(x => x.IfNewUser)
+                </div>
+                <div class="lineHorizontal"></div>
+                @if (!Model.IfNewUser)
+                {
+                <input type="submit" id="login" class="btn btn-outline-success" value="Login" asp-action="Login" />
+                <input type="submit" id="register" class="btn btn-outline-success" value="Register" asp-action="Register" style="visibility:hidden;" />
+                }
+                else
+                {
+                <input type="submit" id="login" class="btn btn-outline-success" value="Login" asp-action="Login" style="visibility:hidden;" />
+                <input type="submit" id="register" class="btn btn-outline-success register" value="Register" asp-action="Register" />
+                }
+                <div class="forgotPassword">
+                    <a href="\Account\ForgotPassword">Forgot Password ?</a>
+                </div>
+
+
+            </div>
+        </form>
+    </div>
 </div>

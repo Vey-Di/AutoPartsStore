@@ -69,7 +69,7 @@ namespace AutoPartsStore.Controllers
                 }
                 else
                 {
-                    var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, true, false);
+                    var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
                     if (result.Succeeded)
                     {
                         if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
@@ -96,6 +96,76 @@ namespace AutoPartsStore.Controllers
         {
             await signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await userManager.FindByEmailAsync(model.Email);
+                if (user == null)
+                {
+                    return View("ForgotPasswordConfirmation");
+                }
+
+                var code = await userManager.GeneratePasswordResetTokenAsync(user);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+
+                MailAddress from = new MailAddress("vsmirnov116@gmail.com", "Phone Shop");
+                MailAddress to = new MailAddress($"{model.Email}");
+                MailMessage m = new MailMessage(from, to);
+                m.Subject = "Password Reset";
+                m.Body = $"<lable>Для сброса пароля пройдите по ссылке: <a href='{callbackUrl}'>link</a>";
+                m.IsBodyHtml = true;
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                smtp.Credentials = new NetworkCredential("vsmirnov116@gmail.com", "rxjtladqnkbrazod");
+                smtp.EnableSsl = true;
+                smtp.Send(m);
+                return View("ForgotPasswordConfirmation");
+            }
+            return View(model);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ResetPassword(string code = null)
+        {
+            return code == null ? View("Error") : View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var user = await userManager.FindByEmailAsync(model.Email);
+            if (user == null)
+            {
+                return View("ResetPasswordConfirmation");
+            }
+            var result = await userManager.ResetPasswordAsync(user, model.Code, model.Password);
+            if (result.Succeeded)
+            {
+                return View("ResetPasswordConfirmation");
+            }
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+            return View(model);
         }
     }
 }
