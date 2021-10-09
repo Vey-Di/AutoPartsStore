@@ -90,3 +90,7 @@ D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\Razor\Views\Rol
 D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\Razor\Views\Roles\Index.cshtml.g.cs
 D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\Razor\Views\Roles\UserList.cshtml.g.cs
 D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\Razor\Views\Home\PartShow.cshtml.g.cs
+D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\Razor\Views\Account\ForgotPassword.cshtml.g.cs
+D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\Razor\Views\Account\ForgotPasswordConfirmation.cshtml.g.cs
+D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\Razor\Views\Account\ResetPassword.cshtml.g.cs
+D:\AutoPartsStore\AutoPartsStore\AutoPartsStore\obj\Debug\net5.0\Razor\Views\Account\ResetPasswordConfirmation.cshtml.g.cs
