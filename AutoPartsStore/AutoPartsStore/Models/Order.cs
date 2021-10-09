@@ -18,10 +18,10 @@ namespace AutoPartsStore.Models
         [Required(ErrorMessage = "Phone number is required")]
         [Phone(ErrorMessage = "Incorrect Phone number")]
         public string ContactPhone { get; set; }
-        [Required(ErrorMessage = "Email is required")]
-        [EmailAddress(ErrorMessage = "Incorrect Email")]
-        public string Email { get; set; }
+
         public string Cart { get; set; }
+
+        public string UserName { get; set; }
 
         [NotMapped]
         public Cart VisualCart { get; set; }

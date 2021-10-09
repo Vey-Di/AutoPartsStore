@@ -9,9 +9,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AutoPartsStore.Controllers
 {
+    [Authorize]
     public class CartController : Controller
     {
         PartContext context;
@@ -124,7 +126,7 @@ namespace AutoPartsStore.Controllers
                 try
                 {
                     MailAddress from = new MailAddress("vsmirnov116@gmail.com", "Part Shop");
-                    MailAddress to = new MailAddress($"{order.Email}");
+                    MailAddress to = new MailAddress($"{order.UserName}");
                     MailMessage m = new MailMessage(from, to);
                     m.Subject = "Спасибо за покупку";
                     m.Body = "<h4>Добрый день, запсибо за покупку в нашем магазине</h4>";

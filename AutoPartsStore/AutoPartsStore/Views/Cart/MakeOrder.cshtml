@@ -28,13 +28,15 @@
                     @Html.TextBoxFor(x => x.ContactPhone)
                     @Html.ValidationMessageFor(x => x.ContactPhone)
                 </div>
-                <div class="item">
+                @*<div class="item">
                     @Html.LabelFor(x => x.Email)
                     @Html.TextBoxFor(x => x.Email)
                     @Html.ValidationMessageFor(x => x.Email)
-                </div>
+                </div>*@
                 @Html.HiddenFor(x => x.Cart)
                 @Html.HiddenFor(x => x.VisualCart)
+                @*@Html.HiddenFor(x=>x.UserName)*@
+                <input type="hidden" value="@User.Identity.Name" name="Username"/>
                 <hr>
                 <input type="submit" class="btn btn-outline-success" value="Confirm Order" />
             </div>
@@ -42,5 +44,29 @@
     </div>
 </div>
 <div id="addCart">
-    
+
+    <div>
+        <div id="showList">
+            @foreach (var line in Model.VisualCart.Lines)
+            {
+                <div class="item">
+                    <div class="leftTab">
+                        <div class="center">
+                            <img src="data:image/png;base64, @line.Part.Image" />
+                        </div>
+                        <div class="center">
+                            <label>@line.Part.Title</label>
+                        </div>
+                    </div>
+                    <div class="center quantity">
+                        <label>@line.Quantity</label>
+                    </div>
+                    <div class="price center">
+                        <label>@(line.Quantity * line.Part.Price) ₴</label>
+                    </div>
+                </div>
+                <hr>
+            }
+        </div>
+    </div>
 </div>
