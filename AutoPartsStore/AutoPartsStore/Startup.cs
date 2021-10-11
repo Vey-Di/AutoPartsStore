@@ -1,4 +1,5 @@
 using AutoPartsStore.Models;
+using AutoPartsStore.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,6 +36,8 @@ namespace AutoPartsStore
             services.AddDbContext<PartContext>(options => options.UseSqlServer(connection));
             services.AddControllersWithViews();
             services.AddSession();
+
+            services.AddTransient<LoginHelper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
